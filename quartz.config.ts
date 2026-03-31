@@ -9,7 +9,7 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "4fo's Garden",
-    enableGPA: false,
+    enableGPA: true,
     enablePopovers: true,
     analytics: {
       provider: "plausible",
