@@ -18,10 +18,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Setup Quartz
-        uses: jackyzha0/quartz-github-action@v1
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          args: build
+          node-version: 20
+      - name: Install Dependencies
+        run: npm install
+      - name: Build Quartz
+        run: npx quartz build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -30,6 +34,7 @@ jobs:
     needs: build
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
