@@ -9,10 +9,13 @@ export const sharedPageComponents: SharedLayout = {
  Component.ContentMeta(),
  Component.TagList(),
 
- Component.ConditionalRender({
-      component: Component.RecentNotes({ title: "Latest from the Garden", limit: 8 }),
-  filter: (f) => f.slug !== "index" 
-//      condition: (page) => page.fileData.slug === "index",
+    Component.ConditionalRender({
+      component: Component.RecentNotes({ 
+        title: "Latest from the Garden", 
+        limit: 8,
+        filter: (f) => f.slug !== "index" // Moved INSIDE RecentNotes
+      }),
+      condition: (page) => page.fileData.slug === "index", // UNCOMMENTED THIS
     }),
 
 ],
