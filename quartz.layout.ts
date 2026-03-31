@@ -11,7 +11,8 @@ export const sharedPageComponents: SharedLayout = {
 
  Component.ConditionalRender({
       component: Component.RecentNotes({ title: "Latest from the Garden", limit: 8 }),
-      condition: (page) => page.fileData.slug === "index",
+  filter: (f) => f.slug !== "index" 
+//      condition: (page) => page.fileData.slug === "index",
     }),
 
 ],
