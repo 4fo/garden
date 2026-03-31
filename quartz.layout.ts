@@ -8,6 +8,12 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [
  Component.ContentMeta(),
  Component.TagList(),
+
+ Component.ConditionalRender({
+      component: Component.RecentNotes({ title: "Latest from the Garden", limit: 8 }),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+
 ],
   footer: Component.Footer({  
   links: {
@@ -19,7 +25,7 @@ export const sharedPageComponents: SharedLayout = {
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
-  afterBody: [
+  beforeBody: [
     Component.ConditionalRender({
       component: Component.Breadcrumbs(),
       condition: (page) => page.fileData.slug !== "index",
@@ -29,10 +35,10 @@ export const defaultContentPageLayout: PageLayout = {
  //   Component.TagList(),
 
 // Wrap RecentNotes so it ONLY shows on the lander (index)
-    Component.ConditionalRender({
-      component: Component.RecentNotes({ title: "Latest from the Garden", limit: 8 }),
-      condition: (page) => page.fileData.slug === "index",
-    }),
+//    Component.ConditionalRender({
+//      component: Component.RecentNotes({ title: "Latest from the Garden", limit: 8 }),
+//      condition: (page) => page.fileData.slug === "index",
+//    }),
 
 ],
   left: [
