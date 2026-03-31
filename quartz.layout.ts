@@ -5,9 +5,12 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
-  footer: Component.Footer({
-    links: {
+  afterBody: [
+ Component.ContentMeta(),
+ Component.TagList(),
+],
+  footer: Component.Footer({  
+  links: {
       GitHub: "https://github.com/jackyzha0/quartz",
       "Discord Community": "https://discord.gg/cRFFHYye7t",
     },
@@ -21,9 +24,9 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.Breadcrumbs(),
       condition: (page) => page.fileData.slug !== "index",
     }),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
-    Component.TagList(),
+  //  Component.ArticleTitle(),
+ //   Component.ContentMeta(),
+ //   Component.TagList(),
 
 // Wrap RecentNotes so it ONLY shows on the lander (index)
     Component.ConditionalRender({
