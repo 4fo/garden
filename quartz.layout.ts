@@ -24,8 +24,14 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
-Component.RecentNotes({ title: "Latest from the Garden", limit: 8 }), 
-  ],
+
+// Wrap RecentNotes so it ONLY shows on the lander (index)
+    Component.ConditionalRender({
+      component: Component.RecentNotes({ title: "Latest from the Garden", limit: 8 }),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+
+],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
