@@ -24,6 +24,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ArticleTitle(),
     Component.ContentMeta(),
     Component.TagList(),
+Component.RecentNotes({ title: "Latest from the Garden", limit: 8 }), 
   ],
   left: [
     Component.PageTitle(),
